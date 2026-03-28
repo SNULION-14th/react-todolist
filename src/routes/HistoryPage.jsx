@@ -10,14 +10,19 @@ import {
   sub,
   isSameMonth,
   isSameDay,
+  set,
 } from "date-fns";
 
 import CheckListIcon from "../assets/images/checklist.png";
+import { useState } from "react";
+import DayModal from "../components/dayModal";
 
 const HistoryPage = () => {
   const currentDate = new Date();
   const startDate = startOfWeek(startOfMonth(currentDate));
   const endDate = endOfWeek(endOfMonth(currentDate));
+
+  const [selectedDate, setSelectedDate] = useState(null);
 
   const dayCount = (endDate - startDate) / (1000 * 60 * 60 * 24) + 1;
   const days = Array.from({ length: dayCount }, (_, i) =>
@@ -31,7 +36,11 @@ const HistoryPage = () => {
     alert("next month");
   };
   const handleDayClick = (date) => {
-    alert(format(date, "dd MMMM yyyy"));
+    setSelectedDate(date);
+  };
+
+  const handleCloseModal = () => {
+    setSelectedDate(null);
   };
 
   return (
@@ -73,6 +82,9 @@ const HistoryPage = () => {
           ))}
         </div>
       </div>
+      {selectedDate && (
+        <DayModal selectedDate={selectedDate} onClose={handleCloseModal} />
+      )}
       <Link to="/">
         <img
           src={CheckListIcon}
