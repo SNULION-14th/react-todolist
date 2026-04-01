@@ -1,38 +1,16 @@
-# Likelion Front: Todo-List
+# React + Vite
 
-## Initialized by
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-### **spec**
+Currently, two official plugins are available:
 
-```
-Name: todo-list
-Type: React
-Variant: JavaScript
-```
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-### **npm**
+## React Compiler
 
-```
-npm create vite@latest
-📌루트 디렉토리 안에 다시 react app을 만들지 않으려면, 'npm create vite@latest .'을 입력하면 됩니다.
-npm install tailwindcss @tailwindcss/vite
-npm install react-router-dom
-npm install date-fns
-npm install axios
-```
+The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
 
-## Server
+## Expanding the ESLint configuration
 
-```
-# make environment
-python -m venv venv
-
-# Windows
-.\venv\Scripts\activate
-
-# MacOS / Linux
-source venv/bin/activate
-
-# install depenencies
-pip install -r requirements.txt
-```
+If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
