@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { format } from "date-fns";
 import TodoHead from "../components/TodoHead";
@@ -10,7 +10,9 @@ import CalenderIcon from "../assets/images/calendar.png";
 const HomePage = () => {
   const today = format(new Date(), "yyyy-MM-dd");
 
-  const [todos, setTodos] = useState([]);
+  const [todos, setTodos] = useState(() => {
+    return TodoDummyData[today] || [];
+  });
 
   const handleCreate = (text) => {
     const newId =
@@ -23,19 +25,14 @@ const HomePage = () => {
   const handleToggle = (id) => {
     setTodos((prevTodos) =>
       prevTodos.map((todo) =>
-        todo.id === id ? { ...todo, done: !todo.done } : todo
-      )
+        todo.id === id ? { ...todo, done: !todo.done } : todo,
+      ),
     );
   };
 
   const handleRemove = (id) => {
     setTodos((prevTodos) => prevTodos.filter((todo) => todo.id !== id));
   };
-
-  useEffect(() => {
-    const today = format(new Date(), "yyyy-MM-dd");
-    setTodos(TodoDummyData[today] || []);
-  }, []);
 
   return (
     <>
